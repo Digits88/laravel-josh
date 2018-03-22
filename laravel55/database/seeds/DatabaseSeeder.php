@@ -11,8 +11,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(AdminSeeder::class);
-        $this->call(DatatablesSeeder::class);
-        $this->call(CountrySeeder::class);
+        DB::table('payment_schedule')->insert([
+            'Srial_no' => '03',
+            'Due_DateofPayment' => '03 March 2018',
+            'Installment_Amount' => '180,000',
+            'Paid' => '180,000',
+            'Balance' => 'Nill',
+            'Date_of_Payment' => '29 March 2018',
+            'Remarks' => '',
+        ]);
     }
 }

@@ -10,6 +10,7 @@ use App\Mail\Contact;
 use App\Mail\ContactUser;
 use App\Mail\ForgotPassword;
 use App\Mail\Register;
+use App\Payment_Schedule;
 use App\User;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
@@ -96,7 +97,8 @@ class FrontEndController extends JoshController
     {
         $user = Sentinel::getUser();
         $countries = $this->countries;
-        return view('user_account', compact('user', 'countries'));
+        $s = Payment_Schedule::all();
+        return view('user_account', compact('user','s' ,'countries'));
     }
 
     /**
@@ -404,7 +406,11 @@ class FrontEndController extends JoshController
             return redirect('admin/signin')->with('error', 'You must be login!');
         }
 
+
     }
-
-
+//
+//    public function Schedule(){
+//$s = Payment_Schedule::all();
+//return view('');
+//    }
 }
